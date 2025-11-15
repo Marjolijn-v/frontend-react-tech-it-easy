@@ -1,9 +1,17 @@
 import './App.css';
+import totalSoldTVs from './helpers/soldTVs.js'
 
 function App() {
-  return (
-    <h1>Begin hier met met maken van de applicatie!</h1>
+
+
+    return (
+        <>
+        <article className="sold-tvs-container">Aantal verkochte producten {totalSoldTVs()} </article>
+        </>
   )
+
 }
+
+
 
 export default App
