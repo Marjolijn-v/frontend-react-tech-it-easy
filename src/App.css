@@ -1,20 +1,32 @@
-.outer-container.api {
+.outer-container-api {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
 
 }
+
 .sold-tvs-container {
     border: 1px solid seagreen;
     color: seagreen;
+    max-width: 300px;
+    padding: 25px;
+
+
 }
 
 .original-stock-container {
     border: 1px solid steelblue;
     color: steelblue;
+    max-width: 300px;
+    padding: 25px;
 }
 
 .to-sell-container {
     border: 1px solid indianred;
     color: indianred;
+    max-width: 300px;
+    padding: 25px;
 }
 
 .outer-container-productcard {
@@ -42,4 +54,12 @@
 .icon {
     max-width: 20px;
     margin: 10px;
+}
+
+.outer-container-buttons {
+    display: flex;
+}
+
+button {
+    margin: 15px;
 }

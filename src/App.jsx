@@ -61,11 +61,11 @@ function App() {
                     </div>
                 </article>
             </div>
-
+            <div className="outer-container-buttons">
             <button type="button" onClick={bestSoldFirst}>Meest verkocht eerst</button>
             <button type="button" onClick={cheapestFirst}>Goedkoopste eerst</button>
             <button type="button" onClick={mostSuitableForSports}>Meest geschikt voor sport eerst</button>
-
+            </div>
 
 
                 {/*// 'Meest verkocht eerst'*/}
