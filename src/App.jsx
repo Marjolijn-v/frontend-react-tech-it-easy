@@ -113,10 +113,10 @@ function App() {
                                 <ul className="tv-options">
                                     {stock.options.map((option) => {
                                         if (option.applicable === true) {
-                                            return <li key={option.name}><img className="icon" src={check}
+                                            return <li key={option.name} className="option"><img className="icon" src={check}
                                                                               alt="check"/> {option.name}</li>
                                         } else {
-                                            return <li key={option.name}><img className="icon" src={minus}
+                                            return <li key={option.name} className="option"><img className="icon" src={minus}
                                                                               alt="not checked"/> {option.name}</li>
                                         }
                                     })}

@@ -80,10 +80,13 @@ ul {
     margin: 1rem 0;
 }
 
+.option {
+    margin-right: 10px;
+}
 
 .icon {
     max-width: 12px;
-    margin: 0 4px;
+    margin: 0 1px;
 }
 
 .buttons {
