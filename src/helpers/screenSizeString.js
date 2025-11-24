@@ -1,17 +1,14 @@
-import {bestSellingTv} from "../constants/inventory.js";
 
-
-function screenSizeString() {
+function screenSizeString(screenSizes) {
     let screenSizesString = "";
-    const screenSizeArray = bestSellingTv.availableSizes;
 
-    for (let i = 0; i < screenSizeArray.length; i++) {
-        const sizeInCm = screenSizeArray[i] * 2.54;
+    for (let i = 0; i < screenSizes.length; i++) {
+        const sizeInCm = screenSizes[i] * 2.54;
 
-        if (screenSizeArray.length === 1 || i === screenSizeArray.length - 1) {
-            screenSizesString += screenSizeArray[i] + " inches (" + Math.round(sizeInCm) + " cm)";
+        if (screenSizes.length === 1 || i === screenSizes.length - 1) {
+            screenSizesString += screenSizes[i] + " inches (" + Math.round(sizeInCm) + " cm)";
         } else {
-            screenSizesString += screenSizeArray[i] + " inches (" + Math.round(sizeInCm) + " cm) | ";
+            screenSizesString += screenSizes[i] + " inches (" + Math.round(sizeInCm) + " cm) | ";
         }
     }
     return screenSizesString;

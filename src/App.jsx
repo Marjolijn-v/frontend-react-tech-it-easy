@@ -19,31 +19,55 @@ function App() {
 
     function bestSoldFirst() {
         console.log("Meest verkocht eerst");
+        console.log(inventory.sort((a, b) => b.sold - a.sold));
     }
 
     function cheapestFirst() {
         console.log("Goedkoopste eerst");
+        console.log(inventory.sort((a, b) => a.price - b.price));
     }
 
     function mostSuitableForSports() {
         console.log("Meest geschikt voor sport eerst");
+        console.log(inventory.sort((a, b) => b.refreshRate - a.refreshRate));
+    }
+
+    function biggestScreen() {
+        console.log("Grootste scherm eerst");
+        // Eerst availableSizes arrays sorteren van groot naar klein
+        // Dan inventory array sorteren aan de hand van 1e getal in gesorteerde availableSizes array?
     }
 
 
 
     return (
         <>
+            <h1>Tech it easy dashboard</h1>
+            <h2>Verkoopoverzicht</h2>
             <div className="outer-container-api">
-                <article className="sold-tvs-container">Aantal verkochte producten {totalSoldTVs()} </article>
-                <article className="original-stock-container">Aantal ingekochte producten {purchasedTVs()}</article>
-                <article className="to-sell-container">Aantal te verkopen producten {tvsToSell()}</article>
+
+                <article className="sold-tvs-container">
+                    <p>Aantal verkochte producten</p>
+                    <p className="number">{totalSoldTVs()}</p>
+                </article>
+                <article className="original-stock-container">
+                    <p>Aantal ingekochte producten</p>
+                    <p className="number">{purchasedTVs()}</p>
+                </article>
+                <article className="to-sell-container">
+                    <p>Aantal te verkopen producten</p>
+                    <p className="number">{tvsToSell()}</p>
+                </article>
             </div>
-            <div className="outer-container-productcard">
-                <img className="samsung-crystal-img" src="https://image.coolblue.nl/max/2048xauto/products/2020321" alt="samsung crystal tv"/>
+
+            <h2>Best verkochte tv</h2>
+            <div className="outer-container productcard">
+
+                <img className="tv-img" src={bestSellingTv.sourceImg} alt="image of tv"/>
                 <article className="product-tile">
-                    <p>{productName(bestSellingTv)}</p>
-                    <p>{formattedPrice(bestSellingTv.price)}</p>
-                    <p>{screenSizeString()}</p>
+                    <h3>{productName(bestSellingTv)}</h3>
+                    <p className="price">{formattedPrice(bestSellingTv.price)}</p>
+                    <p>{screenSizeString(bestSellingTv.availableSizes)}</p>
                     <div className="tv-options">
                         <span className="image-wrapper">
                             <img className="icon" src={check} alt="check"/>
@@ -68,33 +92,42 @@ function App() {
                     </div>
                 </article>
             </div>
-            <div className="outer-container-buttons">
-            <button type="button" onClick={bestSoldFirst}>Meest verkocht eerst</button>
-            <button type="button" onClick={cheapestFirst}>Goedkoopste eerst</button>
-            <button type="button" onClick={mostSuitableForSports}>Meest geschikt voor sport eerst</button>
+            <div className="outer-container buttons">
+                <button type="button" onClick={bestSoldFirst}>Meest verkocht eerst</button>
+                <button type="button" onClick={cheapestFirst}>Goedkoopste eerst</button>
+                <button type="button" onClick={mostSuitableForSports}>Meest geschikt voor sport eerst</button>
+                <button type="button" onClick={biggestScreen}>Grootste schermgroottes eerst</button>
             </div>
-            <div>
+
+            <div >
                 <ul>
                     {inventory.map((stock) => {
-                        return <li key = {stock.type}><p>{productName(stock)}</p>
-                            <p>{formattedPrice(stock.price)}</p>
-                            <p>{screenSizeString(stock)}</p></li>
+                        return <li key = {stock.type} className="outer-container productcard">
+                            <span className="image-wrapper">
+                                <img className="tv-img" src={stock.sourceImg} alt="image of tv"/>
+                            </span>
+                            <div className="product-tile">
+                                <h3>{productName(stock)}</h3>
+                                <p className="price">{formattedPrice(stock.price)}</p>
+                                <p>{screenSizeString(stock.availableSizes)}</p>
+                                <ul className="tv-options">
+                                    {stock.options.map((option) => {
+                                        if (option.applicable === true) {
+                                            return <li key={option.name}><img className="icon" src={check}
+                                                                              alt="check"/> {option.name}</li>
+                                        } else {
+                                            return <li key={option.name}><img className="icon" src={minus}
+                                                                              alt="not checked"/> {option.name}</li>
+                                        }
+                                    })}
+                                </ul>
+                            </div>
+                        </li>
+
+
                     })}
                 </ul>
             </div>
-
-            <div>
-                <ul>
-                    {inventory.map ((stock) => {
-                        return <li key = {stock.type}>{stock.brand}</li>
-                    })}
-                </ul>
-            </div>
-
-            {/*// Opdracht 2b: Gebruik een array-methode om alle tv's van Tech It Easy weer te geven in hetzelfde */}
-            {/*format als de best verkochte tv. Gebruik hiervoor ook de helperfuncties die je hebt gemaakt tijdens deel 1, */}
-            {/*maar sla de opties (zoals bluetooth, wifi, etc.) nog even over.*/}
-
 
         </>
   )

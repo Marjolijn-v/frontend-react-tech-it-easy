@@ -40,8 +40,6 @@ const oneF = inventory.filter((stock) => {
 })
 
 
-
-
 function showOutcomeInConsole() {
     // console.log("opdracht 1a");
     // console.log(oneA);
@@ -55,7 +53,6 @@ function showOutcomeInConsole() {
     // console.log(oneE);
     // console.log("opdracht 1f");
     // console.log(oneF);
-
 }
 
 export default showOutcomeInConsole;
