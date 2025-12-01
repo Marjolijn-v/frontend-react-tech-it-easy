@@ -18,9 +18,9 @@ const oneC = inventory.find((stock) => {
 
 const oneD = inventory.map((stock) => {
     if (stock.refreshRate >= 100) {
-        return stock.name + ", " + stock.type + " suitable: true"
+        return stock.name + ", " + stock.type + " suitable: true";
     } else {
-        return stock.name + ", " + stock.type + " suitable: false"
+        return stock.name + ", " + stock.type + " suitable: false";
     }
 });
 
@@ -36,8 +36,10 @@ const oneE = inventory.filter((stock) => {
 
 const oneF = inventory.filter((stock) => {
     const hasAmbiLight = stock.options.some(option => option.name === "ambilight" && option.applicable === true);
-    return hasAmbiLight
+    return hasAmbiLight;
 })
+
+
 
 
 function showOutcomeInConsole() {
@@ -53,6 +55,7 @@ function showOutcomeInConsole() {
     // console.log(oneE);
     // console.log("opdracht 1f");
     // console.log(oneF);
+
 }
 
 export default showOutcomeInConsole;

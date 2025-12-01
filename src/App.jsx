@@ -34,8 +34,13 @@ function App() {
 
     function biggestScreen() {
         console.log("Grootste scherm eerst");
-        // Eerst availableSizes arrays sorteren van groot naar klein
-        // Dan inventory array sorteren aan de hand van 1e getal in gesorteerde availableSizes array?
+        inventory.sort((a, b) => {
+            const largestSizeA = a.availableSizes[a.availableSizes.length - 1];
+            const largestSizeB = b.availableSizes[b.availableSizes.length - 1];
+
+            return largestSizeB - largestSizeA;
+        });
+        console.log(inventory);
     }
 
 
